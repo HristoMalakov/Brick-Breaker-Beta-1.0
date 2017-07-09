@@ -7,10 +7,20 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
     private boolean play = false;
     private MapGenerator MGobj;
 
+    // constants to describe the main parameters of the game objects
+    private static final int DELAY = 8;
+    private static final int BRICK_COUNT = 1;
+    private static final int BALL_POSITION_X = 120;
+    private static final int BALL_POSITION_Y = 350;
+    private static final int PLAYER_LOCATION = 310;
+    private static final int BALL_DIR_X = -1;
+    private static final int BALL_DIR_Y = -2;
+
     private Timer timer;
     // create all objects
-    private int player = 310, delay = 8, totalBricks = 21, ballPositionX = 120,
-                score = 0, ballPositionY = 350, ballDirX = -1, ballDirY = -2;
+    private int player = PLAYER_LOCATION, delay = DELAY, totalBricks = BRICK_COUNT,
+                ballPositionX = BALL_POSITION_X, score = 0, ballPositionY = BALL_POSITION_Y,
+                ballDirX = BALL_DIR_X, ballDirY = BALL_DIR_Y;
 
     public Gameplay(){
         MGobj = new MapGenerator( 3, 7 );
@@ -39,7 +49,7 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
         //adding the score
         g.setColor(Color.WHITE);
         g.setFont(new Font("serif",Font.BOLD, 25));
-        g.drawString("Score: "+score, 570, 30);
+        g.drawString("Score: "+score, 470, 30);
 
         //create paddle
         g.setColor(Color.GREEN);
@@ -66,7 +76,7 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
         if(totalBricks == 0){
             g.setColor(Color.YELLOW);
             g.setFont(new Font("serif", Font.BOLD, 30) );
-            g.drawString("Congratulations, you have won!", 190, 300);
+            g.drawString("Congratulations, you have won!", 120, 300);
 
             g.setFont(new Font("serif", Font.BOLD, 20) );
             g.drawString("Press enter to restart", 230, 350);
