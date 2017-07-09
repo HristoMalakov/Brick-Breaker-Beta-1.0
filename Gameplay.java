@@ -12,9 +12,11 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
     private static final int BRICK_COUNT = 1;
     private static final int BALL_POSITION_X = 120;
     private static final int BALL_POSITION_Y = 350;
-    private static final int PLAYER_LOCATION = 310;
+    private static final int PLAYER_LOCATION = 210;
     private static final int BALL_DIR_X = -1;
     private static final int BALL_DIR_Y = -2;
+    private static final int ROW = 1;
+    private static final int COL = 1;
 
     private Timer timer;
     // create all objects
@@ -23,7 +25,7 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
                 ballDirX = BALL_DIR_X, ballDirY = BALL_DIR_Y;
 
     public Gameplay(){
-        MGobj = new MapGenerator( 3, 7 );
+        MGobj = new MapGenerator( ROW, COL );
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -174,14 +176,14 @@ public class Gameplay extends JPanel implements KeyListener,ActionListener{
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
             if(!play || totalBricks == 0){
                 play = true;
-                ballPositionX = 120;
-                ballPositionY = 350;
-                ballDirX = -1;
-                ballDirY = -2;
-                player = 310;
+                ballPositionX = BALL_POSITION_X;
+                ballPositionY = BALL_POSITION_Y;
+                ballDirX = BALL_DIR_X;
+                ballDirY = BALL_DIR_Y;
+                player = PLAYER_LOCATION;
                 score = 0;
-                totalBricks = 21;
-                MGobj = new MapGenerator(3,7);
+                totalBricks = BRICK_COUNT;
+                MGobj = new MapGenerator(ROW,COL);
                 repaint();
             }else{
                 moveLeft();
